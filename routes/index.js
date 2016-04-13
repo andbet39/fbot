@@ -20,10 +20,10 @@ router.post('/webhook/', function (req, res) {
     sender = event.sender.id;
     if (event.message && event.message.text) {
       text = event.message.text;
-      console.log(text);
-      sendTextMessage("Bot creato da Andrea!!!");
-      sendTextMessage(text);
-    
+      console.log(sender,text);
+      sendTextMessage(sender,"Bot creato da Andrea!!!");
+      sendTextMessage(sender,text);
+
 
     }
   }
