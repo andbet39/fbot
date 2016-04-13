@@ -47,7 +47,7 @@ router.post('/webhook/', function (req, res) {
       text = event.message.text;
       console.log(sender,text);
       sendTextMessage(sender,"Bot creato da Andrea!!!");
-      sendTextMessage(sender,text);
+      sendTextMessage(sender,"Al momento sono un pappagallo :" + text);
     }
   }
   res.sendStatus(200);
