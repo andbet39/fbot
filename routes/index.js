@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var request = require('request');
 
 var token = "CAALfWqYMPEkBANA7LZAkNLgVjHDQbfux7helSy2yTj1Y3gl7OlkTnOXeTAPNQM3h3b5Fdd8WEyZCzZCJCmIb23zJJTYhwzvkPrcQcRUR2cxfb2bl8Ho5lzqvSirb2ZCwaEeKh4Qmt0fSrblv0zPuOiL34qvdlJEclJRouWf2kU1ZAAp3ZBLbBHjAZBxNHXIMOgZD";
 
@@ -47,8 +48,6 @@ router.post('/webhook/', function (req, res) {
       console.log(sender,text);
       sendTextMessage(sender,"Bot creato da Andrea!!!");
       sendTextMessage(sender,text);
-
-
     }
   }
   res.sendStatus(200);
