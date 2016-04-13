@@ -21,10 +21,35 @@ router.post('/webhook/', function (req, res) {
     if (event.message && event.message.text) {
       text = event.message.text;
       console.log(text);
+      sendTextMessage("Bot creato da Andrea!!!");
+      sendTextMessage(text);
+    
+
     }
   }
   res.sendStatus(200);
 });
 
+var token = "CAALfWqYMPEkBANA7LZAkNLgVjHDQbfux7helSy2yTj1Y3gl7OlkTnOXeTAPNQM3h3b5Fdd8WEyZCzZCJCmIb23zJJTYhwzvkPrcQcRUR2cxfb2bl8Ho5lzqvSirb2ZCwaEeKh4Qmt0fSrblv0zPuOiL34qvdlJEclJRouWf2kU1ZAAp3ZBLbBHjAZBxNHXIMOgZD";
 
+function sendTextMessage(sender, text) {
+  messageData = {
+    text:text
+  }
+  request({
+    url: 'https://graph.facebook.com/v2.6/me/messages',
+    qs: {access_token:token},
+    method: 'POST',
+    json: {
+      recipient: {id:sender},
+      message: messageData,
+    }
+  }, function(error, response, body) {
+    if (error) {
+      console.log('Error sending message: ', error);
+    } else if (response.body.error) {
+      console.log('Error: ', response.body.error);
+    }
+  });
+}
 module.exports = router;
